@@ -35,9 +35,9 @@ exports.insert_asset_data = function () {
             if (err) throw err;
             res.result = result
             if(result[0]){
-                swap_day = asset_info.swap_all - result[0].swap_all 
+                swap_day =  parseFloat(asset_info.swap_all)  - parseFloat(result[0].swap_all) 
                 if(swap_day < 0){
-                    swap_day = asset_info.swap_all
+                    swap_day = parseFloat(asset_info.swap_all)
                 }
             }
             db.query(`INSERT INTO asset (id,swap_day,port_swap_margin,port_no_swap_margin,lot,balance_all,equity_all,swap_all,date_time) 

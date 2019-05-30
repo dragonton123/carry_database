@@ -40,14 +40,15 @@ exports.insert_asset_data = function () {
                     swap_day = parseFloat(asset_info.swap_all)
                 }
             }
-            db.query(`INSERT INTO asset (id,swap_day,port_swap_margin,port_no_swap_margin,lot,balance_all,equity_all,swap_all,date_time) 
+            db.query(`INSERT INTO asset (id,swap_day,port_swap_margin,port_no_swap_margin,lot,balance_all,equity_all,swap_all,profit_all,date_time) 
             VALUES (NULL,'${swap_day.toFixed(4)}', 
             '${asset_info.port_swap_margin}', 
             '${asset_info.port_no_swap_margin}', 
             '${asset_info.lot}', 
             '${asset_info.balance_all}', 
             '${asset_info.equity_all}',
-            '${asset_info.swap_all}',CURRENT_TIMESTAMP);`, function (err, result) {
+            '${asset_info.swap_all}',
+            '${asset_info.profit_all}',CURRENT_TIMESTAMP);`, function (err, result) {
                     if (err) throw err;
                     // res.result = result
                     next()
